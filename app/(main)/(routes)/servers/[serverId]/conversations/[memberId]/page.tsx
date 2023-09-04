@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { RedirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import { getOrCreateConversation } from "@/lib/conversation";
@@ -22,7 +22,7 @@ type Props = {
 const MemberIdPage = async ({ params, searchParams }: Props) => {
   const profile = await currentProfile();
   if (!profile) {
-    return redirectToSignIn();
+    return <RedirectToSignIn />;
   }
 
   const currentMember = await db.member.findFirst({

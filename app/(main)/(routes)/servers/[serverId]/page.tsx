@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { RedirectToSignIn } from "@clerk/nextjs";
 import React from "react";
 
 import { currentProfile } from "@/lib/current-profile";
@@ -14,7 +14,7 @@ type Props = {
 const ServerIdPage = async ({ params }: Props) => {
   const profile = await currentProfile();
   if (!profile) {
-    return redirectToSignIn();
+    return <RedirectToSignIn />;
   }
   const server = await db.server.findUnique({
     where: {

@@ -1,6 +1,6 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
-import { redirectToSignIn } from "@clerk/nextjs";
+import { RedirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -14,7 +14,7 @@ const InviteCodePage = async ({ params }: Props) => {
   const profile = await currentProfile();
 
   if (!profile) {
-    return redirectToSignIn();
+    return <RedirectToSignIn />;
   }
   if (!params.inviteCode) {
     return redirect("/");

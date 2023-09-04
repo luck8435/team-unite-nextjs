@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { RedirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import { currentProfile } from "@/lib/current-profile";
@@ -19,7 +19,7 @@ type Props = {
 const ChannelIdPage = async ({ params }: Props) => {
   const profile = await currentProfile();
   if (!profile) {
-    return redirectToSignIn();
+    return <RedirectToSignIn />;
   }
 
   const channel = await db.channel.findUnique({
