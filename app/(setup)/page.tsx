@@ -20,7 +20,7 @@ const SetupPage = async (props: Props) => {
   });
 
   if (server) {
-    return redirect(`/servers/${server.id}`);
+    return redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/servers/${server.id}`);
   }
   return <InitialModal />;
 };
